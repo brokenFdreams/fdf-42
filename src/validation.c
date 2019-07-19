@@ -6,13 +6,13 @@
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:26:59 by fsinged           #+#    #+#             */
-/*   Updated: 2019/07/19 13:45:43 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/07/19 14:07:38 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-size_t	ft_count_words(char const *s, char c)
+size_t		ft_count_words(char const *s, char c)
 {
 	size_t count;
 	size_t i;
@@ -33,7 +33,7 @@ size_t	ft_count_words(char const *s, char c)
 ** Checking for valid symbols
 */
 
-void	valid_smbls(char *line)
+static void	valid_smbls(char *str)
 {
 	int i;
 
@@ -53,18 +53,18 @@ void	valid_smbls(char *line)
 ** Checking for valid data in file
 */
 
-void	validation(t_list *lines)
+void		validation(t_list *lines)
 {
 	int i;
 	int j;
 
 	while (lines->next)
 	{
-		i = ft_count_words(lines->data, ' ');
-		j = ft_count_words(lines->data, ' ');
+		i = ft_count_words(lines->content, ' ');
+		j = ft_count_words(lines->content, ' ');
 		if (i != j)
 			ft_error("Map error\n");
-		valide_smbls(list->data);
-		list = list->next;
+		valid_smbls(lines->content);
+		lines = lines->next;
 	}
 }

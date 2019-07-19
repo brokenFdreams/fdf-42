@@ -6,13 +6,13 @@
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 13:34:59 by fsinged           #+#    #+#             */
-/*   Updated: 2019/07/19 13:44:01 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/07/19 14:06:57 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-long int	ft_atoi_base(char *str)
+long int	ft_atoi_base(char *str, int base)
 {
 	int			i;
 	int			j;
@@ -26,11 +26,11 @@ long int	ft_atoi_base(char *str)
 	while (str[i] && str[i] != ' ')
 	{
 		j = 0;
-		while (ar[j] && ft_toupper(str[i]) != ar[j])
+		while (ar[j] && ft_toupper(str[i]) != ar[j] && j < base)
 			j++;
-		if (!ar[j])
+		if (!ar[j] && j >= base)
 			return (res);
-		res = res * 16 + j;
+		res = res * base + j;
 		i++;
 	}
 	return (res);

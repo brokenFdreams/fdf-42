@@ -6,7 +6,7 @@
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:10:08 by fsinged           #+#    #+#             */
-/*   Updated: 2019/07/19 12:21:52 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/07/19 14:09:33 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ void	ft_line_list(t_list **begin, void *line)
 	t_list	*tmp;
 
 	tmp = *begin;
-	if (!(new_line = (t_list*)malloc(sizeof(t_list))))
+	if (!(new = (t_list*)malloc(sizeof(t_list))))
 		ft_error("Malloc error");
-	new->data = line;
+	new->content = line;
 	new->content_size = ft_strlen((char*)line);
 	if (!tmp)
 		*begin = new;
@@ -46,7 +46,7 @@ void	ft_freelist(t_list **begin)
 
 	while (*begin)
 	{
-		free((*begin)->data);
+		free((*begin)->content);
 		tmp = (*begin)->next;
 		free(*begin);
 		*begin = tmp;

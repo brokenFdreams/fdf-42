@@ -6,13 +6,13 @@
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 11:32:46 by fsinged           #+#    #+#             */
-/*   Updated: 2019/07/19 13:45:20 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/07/19 14:12:53 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-void	fill_map_y(t_fdf *fdf, char *data, int y)
+static void	fill_map_y(t_fdf *fdf, char *data, int y)
 {
 	int i;
 	int x;
@@ -45,21 +45,21 @@ void	fill_map_y(t_fdf *fdf, char *data, int y)
 ** Fill a map
 */
 
-void	fill_map(t_fdf *fdf, t_list *lines, int size)
+static void	fill_map(t_fdf *fdf, t_list *lines, int size)
 {
 	int x;
 	int y;
 
 	y = 0;
-	if (!(fdf->map = (t_map*)ft_memmalloc(sizeof(t_map) * size)))
+	if (!(fdf->map = (t_map**)ft_memalloc(sizeof(t_map*) * size)))
 		ft_error("Malloc error\n");
 	while (lines)
 	{
-		x = ft_count_words(lines->data, ' ');
+		x = ft_count_words(lines->content, ' ');
 		fdf->xmax = x;
 		if (!((fdf->map)[y] = (t_map*)ft_memalloc(sizeof(t_map) * x)))
 			ft_error("Malloc error\n");
-		fill_map_y(fdf, (char*)lines->data, y);
+		fill_map_y(fdf, (char*)lines->content, y);
 		y++;
 		lines = lines->next;
 	}
@@ -79,7 +79,7 @@ void	reading(char *file, t_fdf *fdf)
 	y = 0;
 	if ((fdf->fd = open(file, O_RDONLY)) == -1)
 		ft_error("Usage: ./fdf [mapfile.fd]\n");
-	while ((gnl = get_next_line(fdf->fd, line)) > 0 && ++y)
+	while ((gnl = get_next_line(fdf->fd, &line)) > 0 && ++y)
 		ft_line_list(&lines, line);
 	if (gnl == -1)
 		ft_error("Usage: ./fdf [mapfile.fd]\n");

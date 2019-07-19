@@ -6,7 +6,7 @@
 #    By: fsinged <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/09 14:30:28 by fsinged           #+#    #+#              #
-#    Updated: 2019/06/26 17:00:22 by fsinged          ###   ########.fr        #
+#    Updated: 2019/07/19 14:16:21 by fsinged          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -70,7 +70,7 @@ ft_lstdel.c \
 ft_lstadd.c \
 ft_lstiter.c \
 ft_lstmap.c \
-ft_max.c ft_min.c ft_sqrt.c ft_strpcat.c ft_itoa_base.c
+ft_max.c ft_min.c ft_sqrt.c ft_strpcat.c ft_itoa_base.c get_next_line.c
 OBJ = $(SRCS:.c=.o)
 FLAGS = -Wall -Wextra -Werror
 
