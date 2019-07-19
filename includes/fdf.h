@@ -6,7 +6,7 @@
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 10:59:03 by fsinged           #+#    #+#             */
-/*   Updated: 2019/07/19 14:14:36 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/07/19 16:06:23 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@
 # include <mlx.h>
 # include <math.h>
 # include <fcntl.h>
+
+# define W 1000
+# define H 1000
 
 typedef struct	s_map
 {

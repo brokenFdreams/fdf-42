@@ -6,7 +6,7 @@
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 11:32:46 by fsinged           #+#    #+#             */
-/*   Updated: 2019/07/19 14:12:53 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/07/19 15:58:50 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,5 +87,6 @@ void	reading(char *file, t_fdf *fdf)
 	close(fdf->fd);
 	validation(lines);
 	fill_map(fdf, lines, y);
-	free(&lines);
+	create_image(fdf);
+	ft_freelist(&lines);
 }
