@@ -6,7 +6,7 @@
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 15:59:00 by fsinged           #+#    #+#             */
-/*   Updated: 2019/07/22 15:02:32 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/07/22 15:07:55 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@ static void	draw_line(t_fdf *fdf, t_map map0, t_map map1)
 	if (fabs(map0.y - map1.y) > fabs(map0.x - map1.y))
 		while ((map0.y > map1.y ? y >= map1.y : y <= map1.y))
 		{
-			x = /*((y - map0.y)/(map1.y - map0.y)) * (map1.x - map0.x) + */map0.x;
+			x = map0.x;
 			mlx_pixel_put(fdf->mlx, fdf->win, x, y, map0.color);
 			y += map0.y > map1.y ? -1 : 1;
 		}
 	else
 		while ((map0.x > map1.x ? x >= map1.x : x <= map1.x))
 		{
-			y = /*((x - map0.x)/(map1.x - map0.x)) * (map1.y - map0.y) + */map0.y;
+			y = map0.y;
 			mlx_pixel_put(fdf->mlx, fdf->win, x, y, map0.color);
 			x += map0.x > map1.x ? -1 : 1;
 		}
