@@ -6,7 +6,7 @@
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 10:59:03 by fsinged           #+#    #+#             */
-/*   Updated: 2019/07/19 16:06:23 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/07/22 11:07:00 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,6 @@ void		ft_line_list(t_list **begin, void *line);
 void		ft_freelist(t_list **begin);
 void		validation(t_list *lines);
 size_t		ft_count_words(char const *s, char c);
+void		create_image(t_fdf *fdf);
 
 #endif

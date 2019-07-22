@@ -6,29 +6,58 @@
 #    By: fsinged <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/19 13:49:20 by fsinged           #+#    #+#              #
-#    Updated: 2019/07/22 11:03:54 by fsinged          ###   ########.fr        #
+#    Updated: 2019/07/22 11:45:20 by fsinged          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
 NAME = fdf
+
 FLAGS = -Wall -Wextra -Werror
-SRCS_PATH = ./src/
-SRCS_FILES = validation.c reading.c main.c ft_list.c ft_error.c ft_atoi_base.c
-SRCS = $(addprefix $(SRCS_PATH), $(SRCS_FILES))
-LIB_PATH = ./libft/
-LIB = $(LIB_PATH)libft.a
+# src
+SRCS = validation.c reading.c main.c ft_list.c ft_error.c ft_atoi_base.c \
+	image.c
+OBJS = $(addprefix $(OBJDIR), $(SRCS:.c=.o))
 HEADER = -I ./includes/
 
-all:$(NAME)
+# libft
+LIBDIR = ./libft/
+LIB = $(addprefix $(LIBDIR), libft.a)
+LIB_INC = -I $(LIBDIR)
 
-$(NAME):$(SRCS)
-	@make -C $(LIB_PATH)
-	@gcc $(HEADER) $(LIB) $(SRCS) -o $(NAME)
+# mlx
+MLX = ./minilibx/
+MLX_LIB = $(addprefix $(MLX), mlx.a)
+MLX_INC = -I ./minilibx/
+MLX_FILES = -L ./minilibx/ -l mlx -framework OpenGL -framework AppKit
+
+# dirs
+OBJDIR = ./OBJ/
+SRCDIR = ./src/
+
+
+all:obj $(LIB) $(MLX_LIB) $(NAME)
+
+obj:
+	@mkdir $(OBJDIR)
+
+$(OBJDIR)%.o:$(SRCDIR)%.c
+	@gcc $(FLAGS) $(MLX_INC) $(LIB_INC) $(HEADER) -o $@ -c $<
+
+$(LIB):
+	@make -C $(LIBDIR)
+
+$(MLX_LIB):
+	@make -C $(MLX)
+
+$(NAME):$(OBJS)
+	@gcc $(OBJS) $(MLX_FILES) $(LIB) -lm -o $(NAME)
 
 clean:
-	@make fclean -C $(LIB_PATH)
+	@rm -rf $(OBJDIR)
+	@make fclean -C $(LIBDIR)
+	@make clean -C $(MLX)
 
 fclean:clean
-	@/bin/rm -f $(NAME)
+	@rm -f $(NAME)
 
 re:fclean all

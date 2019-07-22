@@ -6,7 +6,7 @@
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:10:08 by fsinged           #+#    #+#             */
-/*   Updated: 2019/07/22 11:04:07 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/07/22 11:59:59 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	ft_line_list(t_list **begin, void *line)
 		ft_error("Malloc error");
 	new->content = line;
 	new->content_size = ft_strlen((char*)line);
+	new->next = NULL;
 	if (!tmp)
 		*begin = new;
 	else
