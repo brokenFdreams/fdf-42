@@ -6,11 +6,11 @@
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:10:08 by fsinged           #+#    #+#             */
-/*   Updated: 2019/07/19 15:58:36 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/07/22 11:04:07 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#include "fdf.h"
 
 /*
 ** Add new element to list

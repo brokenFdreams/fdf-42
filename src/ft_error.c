@@ -6,11 +6,11 @@
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 11:04:27 by fsinged           #+#    #+#             */
-/*   Updated: 2019/07/19 11:07:26 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/07/22 11:04:19 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#include "fdf.h"
 
 void	ft_error(char *message)
 {

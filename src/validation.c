@@ -6,11 +6,11 @@
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:26:59 by fsinged           #+#    #+#             */
-/*   Updated: 2019/07/19 14:07:38 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/07/22 11:05:15 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#include "fdf.h"
 
 size_t		ft_count_words(char const *s, char c)
 {

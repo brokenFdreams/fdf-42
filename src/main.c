@@ -6,11 +6,11 @@
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 15:51:56 by fsinged           #+#    #+#             */
-/*   Updated: 2019/07/19 11:34:53 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/07/22 11:04:35 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#include "fdf.h"
 
 int		main(int argc, char **argv)
 {

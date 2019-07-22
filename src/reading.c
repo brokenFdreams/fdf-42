@@ -6,11 +6,11 @@
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 11:32:46 by fsinged           #+#    #+#             */
-/*   Updated: 2019/07/19 15:58:50 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/07/22 11:05:04 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#include "fdf.h"
 
 static void	fill_map_y(t_fdf *fdf, char *data, int y)
 {
@@ -87,6 +87,6 @@ void	reading(char *file, t_fdf *fdf)
 	close(fdf->fd);
 	validation(lines);
 	fill_map(fdf, lines, y);
-	create_image(fdf);
+//	create_image(fdf);
 	ft_freelist(&lines);
 }
