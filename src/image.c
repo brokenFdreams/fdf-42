@@ -6,7 +6,7 @@
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 15:59:00 by fsinged           #+#    #+#             */
-/*   Updated: 2019/07/22 15:07:55 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/07/23 14:29:25 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,17 @@ static void	draw_line(t_fdf *fdf, t_map map0, t_map map1)
 
 	x = map0.x;
 	y = map0.y;
-	if (fabs(map0.y - map1.y) > fabs(map0.x - map1.y))
+	if ((fabs(map1.y - map0.y) > fabs(map1.x - map0.x)))
 		while ((map0.y > map1.y ? y >= map1.y : y <= map1.y))
 		{
-			x = map0.x;
+			x = ((y - map0.y) / (map1.y - map0.y)) * (map1.x - map0.x) + map0.x;
 			mlx_pixel_put(fdf->mlx, fdf->win, x, y, map0.color);
 			y += map0.y > map1.y ? -1 : 1;
 		}
 	else
 		while ((map0.x > map1.x ? x >= map1.x : x <= map1.x))
 		{
-			y = map0.y;
+			y = ((x - map0.x) / (map1.x - map0.x)) * (map1.y - map0.y) + map0.y;
 			mlx_pixel_put(fdf->mlx, fdf->win, x, y, map0.color);
 			x += map0.x > map1.x ? -1 : 1;
 		}
@@ -61,6 +61,15 @@ static void	draw_image(t_fdf *fdf)
 }
 
 /*
+** Changing the coordinate for map rotation
+*/
+/*
+static void	rotate_map(t_fdf *fdf)
+{
+
+}
+*/
+/*
 ** Place coordinate to the center of window
 */
 
@@ -70,9 +79,9 @@ static void	place_to_center(t_fdf *fdf)
 	int y;
 
 	if (fmaxf(fdf->xmax, fdf->ymax) == fdf->xmax)
-		fdf->zoom = W / fdf->xmax;
+		fdf->zoom = (W / fdf->xmax) / 1.5;
 	else
-		fdf->zoom = H / fdf->ymax;
+		fdf->zoom = (H / fdf->ymax) / 1.5;
 	y = 0;
 	while (y < fdf->ymax)
 	{
@@ -88,6 +97,7 @@ static void	place_to_center(t_fdf *fdf)
 		}
 		y++;
 	}
+//	rotate_map(fdf);
 }
 
 /*
