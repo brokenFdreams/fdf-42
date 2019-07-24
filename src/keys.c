@@ -6,11 +6,70 @@
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/24 11:19:41 by fsinged           #+#    #+#             */
-/*   Updated: 2019/07/24 13:03:44 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/07/24 14:04:02 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+/*
+** Changing the coordinate for map rotation
+*/
+
+static void	rotate_map(t_fdf *fdf)
+{
+	int		x;
+	int		y;
+	double	copyx;
+	double	copyy;
+
+	y = 0;
+	while (y < fdf->ymax)
+	{
+		x = 0;
+		while (x < fdf->xmax)
+		{
+			copyx = fdf->map[y][x].x;
+			copyy = fdf->map[y][x].y;
+			fdf->map[y][x].x = fdf->map[y][x].x - (copyy - H / 2)
+				- fdf->map[y][x].z;
+			fdf->map[y][x].y = fdf->map[y][x].y + (copyx - W / 2)
+				- (fdf->map[y][x].z * fdf->zoom / 7.5);
+			x++;
+		}
+		y++;
+	}
+}
+
+/*
+** Place coordinate to the center of window
+*/
+
+void		place_to_center(t_fdf *fdf)
+{
+	int x;
+	int y;
+
+	if (fmaxf(fdf->xmax, fdf->ymax) == fdf->xmax)
+		fdf->zoom = (W / fdf->xmax) / 2;
+	else
+		fdf->zoom = (H / fdf->ymax) / 2;
+	y = 0;
+	while (y < fdf->ymax)
+	{
+		x = 0;
+		while (x < fdf->xmax)
+		{
+			fdf->map[y][x].x = (fdf->map[y][x].x - (fdf->xmax - 1) / 2)
+				* fdf->zoom + W / 2;
+			fdf->map[y][x].y = (fdf->map[y][x].y - (fdf->ymax - 1) / 2)
+				* fdf->zoom + H / 2;
+			x++;
+		}
+		y++;
+	}
+	rotate_map(fdf);
+}
 
 /*
 ** Rotate x to left or right
@@ -57,34 +116,6 @@ static void	rotate_y(int key, t_fdf *fdf)
 }
 
 /*
-** Rotate z
-*/
-/*
-static void	rotate_z(int key, t_fdf *fdf)
-{
-	int x;
-	int y;
-
-	y = 0;
-	while (y < fdf->ymax)
-	{
-		x = 0;
-		while (x < fdf->xmax)
-		{
-			if (fdf->map[y][x].z != 0.0)
-			{
-				if (key == 5)
-					fdf->map[y][x].y -= fdf->map[y][x].z;
-				else
-					fdf->map[y][x].y += fdf->map[y][x].z;
-			}
-			x++;
-		}
-		y++;
-	}
-}
-*/
-/*
 ** events by keyboard
 */
 
@@ -104,26 +135,5 @@ int			keys_hook(int key, void *param)
 		mlx_clear_window(fdf->mlx, fdf->win);
 		draw_image(fdf);
 	}
-	printf("%d\n", key);
-	return (0);
-}
-
-int			mouse_hook(int key, void *param)
-{
-	t_fdf *fdf;
-
-	fdf = (t_fdf*)param;
-/*	if (key == 5 || key == 4)
-	{
-		write(1, "0", 1);
-		rotate_y(key + 121, fdf);
-		write(1, "1", 1);
-		mlx_clear_window(fdf->mlx, fdf->win);
-		write(1, "2", 1);
-		draw_image(fdf);
-		write(1, "3", 1);
-	}
-*/
-	printf("%d\n", key);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 10:59:03 by fsinged           #+#    #+#             */
-/*   Updated: 2019/07/24 12:57:01 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/07/24 14:06:08 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include "../libft/libft.h"
 # include "../libft/get_next_line.h"
-# include <stdio.h>
 # include <mlx.h>
 # include <math.h>
 # include <fcntl.h>
@@ -42,17 +41,16 @@ typedef struct	s_fdf
 	double		zoom;
 }				t_fdf;
 
-void		ft_error(char *message);
-void		reading(char *file, t_fdf *fdf);
-long int	ft_atoi_base(char *str, int base);
-void		ft_line_list(t_list **begin, void *line);
-void		ft_freelist(t_list **begin);
-void		validation(t_list *lines);
-size_t		ft_count_words(char const *s, char c);
-void		create_image(t_fdf *fdf);
-void		draw_image(t_fdf *fdf);
-int			keys_hook(int key, void *param);
-int			mouse_hook(int key, void *param);
-void		freefdf(t_fdf **fdf);
+void			ft_error(char *message);
+void			reading(char *file, t_fdf *fdf);
+long int		ft_atoi_base(char *str, int base);
+void			ft_line_list(t_list **begin, void *line);
+void			ft_freelist(t_list **begin);
+void			validation(t_list *lines);
+size_t			ft_count_words(char const *s, char c);
+void			create_image(t_fdf *fdf);
+void			draw_image(t_fdf *fdf);
+void			place_to_center(t_fdf *fdf);
+int				keys_hook(int key, void *param);
 
 #endif
