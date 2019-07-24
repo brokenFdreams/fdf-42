@@ -6,7 +6,7 @@
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 11:32:46 by fsinged           #+#    #+#             */
-/*   Updated: 2019/07/24 13:00:03 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/07/24 15:54:17 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	fill_map_y(t_fdf *fdf, char *data, int y)
 			if (data[i] && data[i] == ',')
 				(fdf->map)[y][x].color = ft_atoi_base(data + ++i + 2, 16);
 			else
-				(fdf->map)[y][x].color = ft_atoi_base("FFFFFF", 16);
+				(fdf->map)[y][x].color = -1;
 			x++;
 			while (data[i] && data[i] != ' ')
 				i++;

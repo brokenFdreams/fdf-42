@@ -6,7 +6,7 @@
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 15:59:00 by fsinged           #+#    #+#             */
-/*   Updated: 2019/07/24 14:01:11 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/07/24 15:53:30 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,17 @@
 
 static void	set_color(double z0, double z1, t_map *map0)
 {
-	map0->color = ((z0 && !(z1)) || (!(z0) && (z1))) ?
-		ft_atoi_base("00FFFF", 16) : map0->color;
-	map0->color = (z0 && z1) ?
-		ft_atoi_base("DAA520", 16) : map0->color;
+	if (map0->color == -1)
+	{
+		if (z0 != 0 && z1 != 0 && z0 != z1)
+			map0->color = ft_atoi_base("228B22", 16);
+		else if (z0 != 0 && z1 != 0 && z0 == z1)
+			map0->color = ft_atoi_base("FFFF00", 16);
+		else if (z0 || z1)
+			map0->color = ft_atoi_base("00CED1", 16);
+		else
+			map0->color = ft_atoi_base("FFFFFF", 16);
+	}
 }
 
 static void	draw_line(t_fdf *fdf, t_map map0, t_map map1)

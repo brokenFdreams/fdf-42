@@ -6,7 +6,7 @@
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:26:59 by fsinged           #+#    #+#             */
-/*   Updated: 2019/07/24 11:15:15 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/07/24 14:44:09 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ static void	valid_smbls(char *str)
 	{
 		if (ft_isdigit(str[i]) || str[i] == ' ' || str[i] == ',' ||
 			(str[i] >= 'A' && str[i] <= 'F') || str[i] == 'X' ||
-			(str[i] >= 'a' && str[i] <= 'f') || str[i] == 'x')
+			(str[i] >= 'a' && str[i] <= 'f') || str[i] == 'x' ||
+			str[i] == '-')
 			i++;
 		else
 			ft_error("Map error\n");
