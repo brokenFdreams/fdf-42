@@ -6,7 +6,7 @@
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 13:34:59 by fsinged           #+#    #+#             */
-/*   Updated: 2019/07/22 11:04:27 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/07/24 13:08:38 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,6 @@ long int	ft_atoi_base(char *str, int base)
 		res = res * base + j;
 		i++;
 	}
+	ft_strdel(&ar);
 	return (res);
 }

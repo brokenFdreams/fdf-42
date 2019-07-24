@@ -6,7 +6,7 @@
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 10:59:03 by fsinged           #+#    #+#             */
-/*   Updated: 2019/07/22 12:51:26 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/07/24 12:57:01 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,9 @@ void		ft_freelist(t_list **begin);
 void		validation(t_list *lines);
 size_t		ft_count_words(char const *s, char c);
 void		create_image(t_fdf *fdf);
+void		draw_image(t_fdf *fdf);
+int			keys_hook(int key, void *param);
+int			mouse_hook(int key, void *param);
+void		freefdf(t_fdf **fdf);
 
 #endif

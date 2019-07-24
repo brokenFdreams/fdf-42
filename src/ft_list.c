@@ -6,7 +6,7 @@
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:10:08 by fsinged           #+#    #+#             */
-/*   Updated: 2019/07/22 11:59:59 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/07/24 12:57:54 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,18 @@ void	ft_freelist(t_list **begin)
 		free(*begin);
 		*begin = tmp;
 	}
+}
+
+void	freefdf(t_fdf **fdf)
+{
+	int y;
+
+	y = 0;
+	while (y < (*fdf)->ymax)
+	{
+		free((*fdf)->map[y]);
+		y++;
+	}
+	free((*fdf)->map);
+	free(fdf);
 }

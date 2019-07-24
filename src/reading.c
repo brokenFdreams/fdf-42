@@ -6,7 +6,7 @@
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 11:32:46 by fsinged           #+#    #+#             */
-/*   Updated: 2019/07/23 16:23:31 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/07/24 13:00:03 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,12 +69,12 @@ static void	fill_map(t_fdf *fdf, t_list *lines, int size)
 ** Read data from file
 */
 
-void	reading(char *file, t_fdf *fdf)
+void		reading(char *file, t_fdf *fdf)
 {
 	int		gnl;
 	int		y;
 	char	*line;
-	t_list	*lines = NULL;
+	t_list	*lines;
 
 	y = 0;
 	if ((fdf->fd = open(file, O_RDONLY)) == -1)
@@ -87,6 +87,6 @@ void	reading(char *file, t_fdf *fdf)
 	close(fdf->fd);
 	validation(lines);
 	fill_map(fdf, lines, y);
-	create_image(fdf);
 	ft_freelist(&lines);
+	create_image(fdf);
 }
