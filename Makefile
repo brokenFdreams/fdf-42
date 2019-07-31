@@ -6,7 +6,7 @@
 #    By: fsinged <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/19 13:49:20 by fsinged           #+#    #+#              #
-#    Updated: 2019/07/24 11:46:48 by fsinged          ###   ########.fr        #
+#    Updated: 2019/07/31 12:43:28 by fsinged          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -15,7 +15,7 @@ NAME = fdf
 FLAGS = -Wall -Wextra -Werror
 # src
 SRCS = validation.c reading.c main.c ft_list.c ft_error.c ft_atoi_base.c \
-	image.c keys.c
+	image.c keys.c rotate.c
 OBJS = $(addprefix $(OBJDIR), $(SRCS:.c=.o))
 HEADER = -I ./includes/
 

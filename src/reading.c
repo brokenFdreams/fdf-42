@@ -6,7 +6,7 @@
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 11:32:46 by fsinged           #+#    #+#             */
-/*   Updated: 2019/07/24 15:54:17 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/07/31 11:40:17 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,10 @@ static void	fill_map(t_fdf *fdf, t_list *lines, int size)
 	y = 0;
 	if (!(fdf->map = (t_map**)ft_memalloc(sizeof(t_map*) * size)))
 		ft_error("Malloc error\n");
+	x = ft_count_words(lines->content, ' ');
+	fdf->xmax = x;
 	while (lines)
 	{
-		x = ft_count_words(lines->content, ' ');
-		fdf->xmax = x;
 		if (!((fdf->map)[y] = (t_map*)ft_memalloc(sizeof(t_map) * x)))
 			ft_error("Malloc error\n");
 		fill_map_y(fdf, (char*)lines->content, y);

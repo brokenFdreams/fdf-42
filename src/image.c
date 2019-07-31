@@ -6,7 +6,7 @@
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 15:59:00 by fsinged           #+#    #+#             */
-/*   Updated: 2019/07/24 15:53:30 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/07/31 13:24:37 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,31 @@ static void	draw_line(t_fdf *fdf, t_map map0, t_map map1)
 			mlx_pixel_put(fdf->mlx, fdf->win, x, y, map0.color);
 			x += map0.x > map1.x ? -1 : 1;
 		}
+}
+
+/*
+** Draw second projection
+*/
+
+void		draw_new_image(t_fdf *fdf)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (y < fdf->ymax)
+	{
+		x = 0;
+		while (x < fdf->xmax)
+		{
+			if ((x + 1) < fdf->xmax)
+				draw_line(fdf, fdf->maps[y][x], fdf->maps[y][x + 1]);
+			if ((y + 1) < fdf->ymax)
+				draw_line(fdf, fdf->maps[y][x], fdf->maps[y + 1][x]);
+			x++;
+		}
+		y++;
+	}
 }
 
 /*
